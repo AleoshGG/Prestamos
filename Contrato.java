@@ -2,6 +2,7 @@ package Prestamos;
 
 public class Contrato {
     //Atributos
+    protected String nombreContrato;
     protected double cantidadPrestamo;
     protected int plazoLiquidacion;
     protected Cliente cliente = new Cliente();
@@ -20,6 +21,14 @@ public class Contrato {
         this.cliente = cliente;
     }
     
+    public void setNombreContrato(String nombreContrato){
+        this.nombreContrato = nombreContrato;
+    }
+    
+    public String getNombreContrato(){
+        return nombreContrato;
+    }
+    
     public double getCantidadPrestamo(){
         return cantidadPrestamo;
     }
@@ -33,5 +42,24 @@ public class Contrato {
     }
     
     //demas metodos
+    public double generarInteres(){
+        double interes = cantidadPrestamo * 0.10;
+        return interes;
+    }
+    
+    public double generarSubtotal(){
+        double subtotal = (generarInteres() + cantidadPrestamo);
+        return subtotal;
+    }
+    
+    public double generarCantidadPlazo(){
+        double cantidadPlazo = (generarSubtotal()/plazoLiquidacion);
+        return cantidadPlazo;
+    }
+    
+    public String verContrato(){
+        String concatenacion = "";
+        return concatenacion;
+    }
     
 }
