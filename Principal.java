@@ -6,23 +6,6 @@ import java.util.Scanner;
 public class Principal {
 
     public static void main(String[] args) {
-        
-        /*ContratoQuincenal contrato1 = new ContratoQuincenal();
-        
-        contrato1.getCliente().setNombre("Alesis");
-        contrato1.setCantidadPrestamo(12000);
-        contrato1.setPlazoLiquidacion(3);
-        
-        //operaciones
-        contrato1.generarInteres();
-        contrato1.generarSubtotal();
-        contrato1.generarCantidadPlazo();
-        contrato1.setNombreContrato();
-        
-        
-        
-        System.out.println(contrato1.verContrato());*/
-        
         ArrayList<Contrato> listaContratos = new ArrayList();
         
         //Hacer un contrato
@@ -30,7 +13,41 @@ public class Principal {
         //Buscar contrato
         //Ver contratos existentes
         
+        
+        
     }
+    
+    public void verMenu(ArrayList listaContratos){
+        Scanner sc = new Scanner (System.in);
+        int opcion= 0;
+        
+        do{
+            System.out.println("¿Què desea realizar");
+            System.out.println("1. Hacer contrato\n2. Buscar contrato \n3. Imprimir contratos existentes");
+            opcion = sc.nextInt();
+        } while(opcion<1 || opcion>3);
+        
+        switch(opcion){
+            case 1:
+                generarContrato(listaContratos);
+            break;
+            
+            case 2:
+                buscarCliente(listaContratos);
+                
+            break;
+            
+            case 3:
+            break;
+            
+            default:
+                System.out.println("No valido");
+            break;
+        }
+    }
+    
+    
+    
     
     public static void generarContrato(ArrayList listaContratos){
         //Elejir el tipo de contrato
@@ -141,4 +158,10 @@ public class Principal {
         
     }
     
+    public static void buscarCliente(ArrayList listaContratos){
+        //Obtener nombre del cliente 
+        
+        //Buscar en la lista
+        //Imprimir resultado cliente encontrado
+    }
 }
