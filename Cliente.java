@@ -1,5 +1,7 @@
 package Prestamos;
 
+import java.util.Scanner;
+
 public class Cliente {
     //Atributos 
     private String nombre;
@@ -12,6 +14,7 @@ public class Cliente {
     }
     
     public void setEdad(int edad){
+        validarEdad(edad);
         this.edad = edad;
     }
     
@@ -32,4 +35,13 @@ public class Cliente {
     }
     
     //Demás Métodos
+    public void validarEdad(int edad){
+        
+    Scanner sc = new Scanner(System.in);
+    
+        while (edad<18) {
+            System.out.print("Tienes que ser mayor de edad\nIntentalo de nuevo: ");
+            edad = sc.nextInt();
+        }
+    }
 }

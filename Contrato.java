@@ -1,5 +1,7 @@
 package Prestamos;
 
+import java.util.Scanner;
+
 public class Contrato {
     //Atributos
     protected String nombreContrato;
@@ -14,7 +16,8 @@ public class Contrato {
     }
     
     public void setPlazoLiquidacion(int plazo){
-       plazoLiquidacion = plazo;
+        validarPlazo(plazo);
+        plazoLiquidacion = plazo;
     }
     
     public void setCliente(Cliente cliente){
@@ -62,4 +65,13 @@ public class Contrato {
         return concatenacion;
     }
     
+    public void validarPlazo(int plazo){
+        Scanner sc = new Scanner(System.in);
+        
+        while (plazo<1 || plazo>60) {
+            System.out.println("No valido, intentalo de nuevo");
+            System.out.print("Plazo de liquidacion (Meses): ");
+            plazo = sc.nextInt();
+        }
+    }
 }
