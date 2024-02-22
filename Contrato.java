@@ -12,6 +12,7 @@ public class Contrato {
     
     //metodos SETTER y GETTER
     public void setCantidadPrestamo(double cantidad){
+        validarCantidadPrestamo(cantidad);
         cantidadPrestamo = cantidad;
     }
     
@@ -60,6 +61,9 @@ public class Contrato {
         return cantidadPlazo;
     }
     
+    public void realizarContrato(){
+    }
+    
     public String verContrato(){
         String concatenacion = "";
         return concatenacion;
@@ -72,6 +76,16 @@ public class Contrato {
             System.out.println("No valido, intentalo de nuevo");
             System.out.print("Plazo de liquidacion (Meses): ");
             plazo = sc.nextInt();
+        }
+    }
+    
+    public void validarCantidadPrestamo(double monto){
+        
+    Scanner sc = new Scanner(System.in);
+    
+        while (monto<1000) {
+            System.out.print("Monto no valido\nCantidad requerida (MXN): $");
+            monto = sc.nextInt();
         }
     }
 }

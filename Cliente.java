@@ -40,7 +40,7 @@ public class Cliente {
     Scanner sc = new Scanner(System.in);
     
         while (edad<18) {
-            System.out.print("Tienes que ser mayor de edad\nIntentalo de nuevo: ");
+            System.out.print("Tienes que ser mayor de edad\nEdad: ");
             edad = sc.nextInt();
         }
     }

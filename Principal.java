@@ -40,30 +40,54 @@ public class Principal {
         do {
             System.out.println("\n\tContratos");
             System.out.println("Elija el tipo de contrato de su interes: ");
-            System.out.println("1. Contratos Mensuales\n2. Contratos Quincenales\n1. Contratos Semanales\n");
+            System.out.println("1. Contratos Mensuales\n2. Contratos Quincenales\n3. Contratos Semanales\n");
             opcion = sc.nextInt();
         } while (opcion<1 || opcion>3);
         
         switch(opcion){
             case 1:
-                System.out.println("\tContrato Mensual");
+                //Inicializacion de objetos
                 ContratoMensual contrato = new ContratoMensual();
+                contrato.setNombreContrato();
+                
+                System.out.println("\t"+contrato.getNombreContrato());
+                
+                //Operaciones con los objetos
                 registrarCliente(contrato);
                 llenarContrato(contrato);
+                contrato.realizarContrato();
+                
+                //Añadiendo a la lista
                 listaContratos.add(contrato);
             break;
             case 2:
-                System.out.println("\tContrato Quincenal");
+                //Inicializacion de objetos
                 ContratoQuincenal contrato1 = new ContratoQuincenal();
+                contrato1.setNombreContrato();
+               
+                System.out.println("\t"+contrato1.getNombreContrato());
+                
+                //Operaciones con los objetos
                 registrarCliente(contrato1);
                 llenarContrato(contrato1);
+                contrato1.realizarContrato();
+                
+                //Añadiendo a la lista
                 listaContratos.add(contrato1);
             break;
             case 3:
-                System.out.println("\tContrato Semanal");
+                //Inicializacion de objetos
                 ContratoSemanal contrato2 = new ContratoSemanal();
+                contrato2.setNombreContrato();
+               
+                System.out.println("\t"+contrato2.getNombreContrato());
+                
+                //Operaciones con los objetos
                 registrarCliente(contrato2);
                 llenarContrato(contrato2);
+                contrato2.realizarContrato();
+                
+                //Añadiendo a la lista
                 listaContratos.add(contrato2);
             break;
             default:System.out.println("No valido");

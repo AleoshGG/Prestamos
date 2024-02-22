@@ -11,6 +11,10 @@ public class ContratoSemanal extends Contrato {
         super.setNombreContrato("Contrato Semanal");
     }
     
+    public String getNombrePagos(){
+        return nombrePagos;
+    }
+    
     public double generarTotal(){
         double total = (super.generarCantidadPlazo()/frecuenciaPago);
         return total;
@@ -20,5 +24,13 @@ public class ContratoSemanal extends Contrato {
         String concatenacion = "\n\tContrato\nCliente: "+cliente.getNombre()+"\nContrato: "+nombreContrato+"\nCantidad de prestamo: $"+cantidadPrestamo+"\nPlazo de liquidacion "+plazoLiquidacion+" meses"+"\nPagos: "+nombrePagos+"\nMonto de los pagos: $"+generarTotal();
         return concatenacion;
     }
+    
+    public void realizarContrato(){
+        generarInteres();
+        generarSubtotal();
+        generarCantidadPlazo();
+        generarTotal();
+    }
+    
 }
 
