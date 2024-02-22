@@ -12,7 +12,7 @@ public class ContratoQuincenal extends Contrato {
     }
     
     public double generarTotal(){
-        double total = (super.generarSubtotal()/frecuenciaPago);
+        double total = (super.generarCantidadPlazo()/frecuenciaPago);
         return total;
     }
     
