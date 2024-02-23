@@ -5,27 +5,25 @@ import java.util.Scanner;
 
 public class Principal {
 
+
     public static void main(String[] args) {
         ArrayList<Contrato> listaContratos = new ArrayList();
         
-        //Hacer un contrato
-        generarContrato(listaContratos);
-        //Buscar contrato
-        //Ver contratos existentes
+       verMenu(listaContratos);
         
         
         
     }
     
-    public void verMenu(ArrayList listaContratos){
+    public static void verMenu(ArrayList <Contrato> listaContratos){
         Scanner sc = new Scanner (System.in);
         int opcion= 0;
         
         do{
             System.out.println("¿Què desea realizar");
-            System.out.println("1. Hacer contrato\n2. Buscar contrato \n3. Imprimir contratos existentes");
+            System.out.println("1. Hacer contrato\n2. Buscar contrato \n3. Imprimir contratos existentes \n 4.salir");
             opcion = sc.nextInt();
-        } while(opcion<1 || opcion>3);
+        
         
         switch(opcion){
             case 1:
@@ -38,18 +36,23 @@ public class Principal {
             break;
             
             case 3:
+                verTodosContratos(listaContratos);
+            break;
+            
+            case 4:
             break;
             
             default:
                 System.out.println("No valido");
             break;
-        }
+            }
+        } while(opcion != 4);
     }
     
     
     
     
-    public static void generarContrato(ArrayList listaContratos){
+    public static void generarContrato(ArrayList <Contrato> listaContratos){
         //Elejir el tipo de contrato
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
@@ -59,7 +62,7 @@ public class Principal {
             System.out.println("Elija el tipo de contrato de su interes: ");
             System.out.println("1. Contratos Mensuales\n2. Contratos Quincenales\n3. Contratos Semanales\n");
             opcion = sc.nextInt();
-        } while (opcion<1 || opcion>3);
+        
         
         switch(opcion){
             case 1:
@@ -110,7 +113,9 @@ public class Principal {
             default:System.out.println("No valido");
             break;
         }
-    }
+        opcion = 4;
+        } while (opcion != 4);
+    } 
     
     public static void registrarCliente(Contrato contrato){
         
@@ -158,10 +163,45 @@ public class Principal {
         
     }
     
-    public static void buscarCliente(ArrayList listaContratos){
-        //Obtener nombre del cliente 
+    public static void buscarCliente(ArrayList <Contrato> listaContratos){
         
-        //Buscar en la lista
-        //Imprimir resultado cliente encontrado
+        Scanner sc = new Scanner(System.in);
+        String cliente = "";
+
+        System.out.println("\t Busquedas");
+        System.out.println("Ingrese el nombre del cliente con el que fue registrado: ");
+        cliente = sc.nextLine();
+
+        int indice = -1;
+        for(int i= 0; i < listaContratos.size(); i++){
+            String nombre = listaContratos.get(i).getCliente().getNombre();
+
+            if (nombre.equals(cliente)) {
+                indice = i;
+            }
+        }
+
+        if (indice>= 0){
+            System.out.println("\n\t detalles");
+            System.out.println(listaContratos.get(indice).verContrato());
+            System.out.println("Edad: "+listaContratos.get(indice).getCliente().getEdad());
+            System.out.println("Direccion: "+listaContratos.get(indice).getCliente().getDireccion());
+        } else {
+            System.out.println("No se encontraron registros de clientes ");
+        }
+        
+    }
+
+    public static void verTodosContratos(ArrayList <Contrato> listaContratos){
+        System.out.println("\t Contratos Existentes");
+
+        if (listaContratos.size() > 0) {
+            for(int i = 0; i < listaContratos.size(); i++){
+            System.out.println(listaContratos.get(i).verContrato());
+            }
+            
+        } else {
+            System.out.println("Aún no hay contratos");
+        }   
     }
 }
